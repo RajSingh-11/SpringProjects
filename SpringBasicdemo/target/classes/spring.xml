@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- by default the scope is singleton, this creates the object, even if we are not asked for it and it creates the only one object and returns the same object if we ask for the object. -->
+<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" scope="singleton"></bean> -->
+
+
+<!-- this create the new object every time, and it creates the object when we ask to create it. -->
+<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" scope="prototype"></bean> -->
+
+<!-- Setter Injection -->
+	<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" >
+		<property name="age" value="10"></property>
+		<property name="laptop" ref="Laptop"></property>
+	</bean> -->
+
+
+<!-- Constructor Injection -->
+	<bean id="alien" class="com.telusko.SpringBasicdemo.Alien" >
+		<constructor-arg value="12"></constructor-arg>
+		<constructor-arg ref="Laptop"></constructor-arg>
+	</bean>
+
+	<bean id="Laptop" class="com.telusko.SpringBasicdemo.Laptop" >
+	</bean>
+	
+</beans>
