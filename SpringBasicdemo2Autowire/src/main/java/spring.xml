@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- by default the scope is singleton, this creates the object, even if 
+		we are not asked for it and it creates the only one object and returns the 
+		same object if we ask for the object. -->
+	<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" scope="singleton"></bean> -->
+
+
+	<!-- this create the new object every time, and it creates the object when 
+		we ask for to create it. -->
+	<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" scope="prototype"></bean> -->
+
+	<!-- Setter Injection -->
+	<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" > <property 
+		name="age" value="10"></property> <property name="laptop" ref="Laptop"></property> 
+		</bean> -->
+
+
+	<!-- Constructor Injection -->
+	<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" > <constructor-arg 
+		value="12"></constructor-arg> <constructor-arg ref="Laptop"></constructor-arg> 
+		</bean> -->
+
+
+
+
+	<!--- Autowire Property -->
+	<!-- it tells the spring framework to connect automatically if bean is available. -->
+	<!-- age and com are property name in Alien Class -->
+
+<!-- 1.).By Name -->
+	<!-- <bean id="alien" class="com.telusko.SpringBasicdemo.Alien" 	autowire="byName">
+		<property name="age" value="10"></property>
+		we can skip this line since the property name and bean name is same 
+			so it conects with the help of autowire attribute in bean tag automatically by name
+		<property name="com" ref="com"></property>
+	</bean>
+
+	<bean id="com" class="com.telusko.SpringBasicdemo.Laptop">
+	</bean>
+
+	<bean id="Desktop" class="com.telusko.SpringBasicdemo.Desktop">
+	</bean> -->
+
+<!-- ########################################################################## -->	
+		
+<!-- 2.).By Type -->
+<!-- Here it looks for the type of object the Alien bean needed, like here it is computer, so first bean which is type of computer is Desktop Bean -->
+	<bean id="alien" class="com.telusko.SpringBasicdemo.Alien" 	autowire="byType">
+		<property name="age" value="10"></property>
+		<!-- <property name="com" ref="com"></property> -->
+	</bean>
+
+	<bean id="com" class="com.telusko.SpringBasicdemo.Laptop" primary="true">
+	</bean>
+
+	<bean id="Desktop" class="com.telusko.SpringBasicdemo.Desktop">
+	</bean>
+	
+	<!-- in case of byType, if we have multiple bean of same type then the spring framework get confused which one to pick, in that case then the concept of primary bean is there. --> 
+
+</beans>
