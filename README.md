@@ -1,1 +1,1 @@
-Spring MVC | Hibernate JPA | Auth2.0 Iimplementation
+Spring MVC | Hibernate JPA | Auth2.0 Implementation
